@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Inter", sans-serif;
+  }
+}
+
+@layer components {
+  input[type="checkbox"]:checked~label span svg {
+    @apply inline-flex;
+  }
+
+  .sticky .header-logo {
+    @apply py-5 lg:py-2;
+  }
+
+  .sticky .menu-scroll.active {
+    @apply opacity-70;
+  }
+
+  input#togglePlan:checked~.dot {
+    @apply translate-x-full;
+  }
+
+  input#checkboxLabel:checked~.box span {
+    @apply opacity-100;
+  }
+}
+
+
+/* Styles Masonry */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* Nombre de colonnes automatique */
+  grid-gap: 16px;
+  /* Espacement entre les éléments */
+}
+
+.masonry-item {
+  break-inside: avoid;
+  /* Empêche les coupures d'éléments */
+}
+
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  /* Effet de transition */
+}
+
+.masonry-item img.blur-md {
+  filter: blur(10px);
+  /* Floute les images non chargées */
+}
+
+.masonry-item img.blur-0 {
+  filter: blur(0);
+}
+
+.masonry-item img {
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.masonry-item img.blur-0 {
+  opacity: 1;
+}
