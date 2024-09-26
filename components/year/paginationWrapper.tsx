@@ -1,7 +1,4 @@
-// paginationWrapper.tsx
-
 'use client';
-
 import { useSearchParams } from 'next/navigation';
 import Pagination from './pagination'; // Make sure this path is correct
 
