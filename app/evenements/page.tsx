@@ -55,7 +55,7 @@ const Blog = async () => {
               </div>
             ))}
           </div>
-          <PaginationWrapper totalPages={12} />
+          {/* <PaginationWrapper totalPages={12} /> */}
         </div>
       </section>
     </>
