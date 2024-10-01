@@ -1,20 +1,13 @@
 import SingleBlog from "@/components/year/SingleBlog";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import PaginationWrapper from "./../../components/year/paginationWrapper"; // Import du composant client PaginationWrapper
+import { getEvents } from './../../lib/request'
 
 const Blog = async () => {
   const months = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
     "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre",
   ];
-
-  const getEvents = async (page = 1) => {
-    const res = await fetch(
-      `https://api-gallery.fona-vps.cloud/wp-json/wp/v2/events?acf_format=standard&_fields=id,title,acf,excerpt,featured_media&per_page=6&page=${page}`
-    );
-    const jsonResponse = await res.json();
-    return jsonResponse;
-  };
 
   const events = await getEvents(1); // Utilisez ici une valeur par défaut, car la page sera calculée côté client
 
