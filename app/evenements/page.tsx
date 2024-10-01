@@ -1,15 +1,13 @@
 import SingleBlog from "@/components/year/SingleBlog";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import PaginationWrapper from "./../../components/year/paginationWrapper"; // Import du composant client PaginationWrapper
-import { getEvents } from './../../lib/request'
+import { getEvents } from './../../lib/request';
+import dynamic from "next/dynamic";
+
+// Charger le composant client dynamiquement
+const MonthFilter = dynamic(() => import('./../../components/yearFilter'), { ssr: false });
 
 const Blog = async () => {
-  const months = [
-    "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre",
-  ];
-
-  const events = await getEvents(1); // Utilisez ici une valeur par défaut, car la page sera calculée côté client
+  const events = await getEvents(1); // Récupérer les événements avec une valeur par défaut
 
   return (
     <>
@@ -20,19 +18,10 @@ const Blog = async () => {
       <section className="pt-10 pb-0">
         <div className="container">
           <h2 className="text-center text-2xl font-semibold mb-6">
-            Filtrer les évenements par mois
+            Filtrer les événements par mois
           </h2>
-          <div className="flex flex-wrap justify-center -mx-2">
-            {months.map((month, index) => (
-              <a
-                key={index}
-                href={`#${month.toLowerCase()}`}
-                className="mx-2 mb-4 flex items-center justify-center rounded-md bg-primary bg-opacity-[15%] px-6 py-2 text-base font-medium text-primary transition hover:bg-primary hover:text-white"
-              >
-                {month}
-              </a>
-            ))}
-          </div>
+          {/* Inclure le composant client */}
+          <MonthFilter />
         </div>
       </section>
 
