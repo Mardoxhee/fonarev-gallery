@@ -6,7 +6,7 @@ async function getFromAPi(url: URL, cacheTime?: number) {
                 accept: "application/json",
             },
             next: {
-                revalidate: 60
+                revalidate: 5
             },
         };
         const response = await fetch(url.toString(), options);
