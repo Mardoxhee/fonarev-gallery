@@ -9,7 +9,7 @@ async function getFromAPi(url: URL, cacheTime?: number) {
                 ...(etagCache ? { 'If-None-Match': etagCache } : {}), // Envoi l'ETag s'il existe
             },
             next: {
-                revalidate: 60, // ISR toujours en place, mais on contrôle la révalidation avec ETag
+                revalidate: 1, // ISR toujours en place, mais on contrôle la révalidation avec ETag
             },
         };
 
